@@ -120,7 +120,7 @@ export default function UnitatiArondate() {
             <span className="ua-stat__label">Cadre didactice</span>
           </div>
           <div className="ua-stat">
-            <span className="ua-stat__num">2</span>
+            <span className="ua-stat__num">4</span>
             <span className="ua-stat__label">Localități</span>
           </div>
         </div>
