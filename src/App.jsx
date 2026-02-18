@@ -7,6 +7,7 @@ import InformatiiUtile from './pages/InformatiiUtile'
 import Organigrama from './pages/Organigrama'
 import Regulament from './pages/Regulament'
 import UnitatiArondate from './pages/UnitatiArondate'
+import EleviInscrisi from './pages/EleviInscrisi'
 import Anunturi from './pages/Anunturi'
 import PortalElevi from './pages/PortalElevi'
 import Contact from './pages/Contact'
@@ -24,6 +25,7 @@ function App() {
           <Route path="/organigrama" element={<Organigrama />} />
           <Route path="/regulament" element={<Regulament />} />
           <Route path="/unitati-arondate" element={<UnitatiArondate />} />
+          <Route path="/elevi-inscrisi" element={<EleviInscrisi />} />
           <Route path="/anunturi" element={<Anunturi />} />
           <Route path="/portal-elevi" element={<PortalElevi />} />
           <Route path="/contact" element={<Contact />} />

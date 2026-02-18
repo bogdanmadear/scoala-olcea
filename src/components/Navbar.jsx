@@ -11,6 +11,7 @@ const navLinks = [
       { label: 'Organigramă', path: '/organigrama' },
       { label: 'Regulament de Funcționare', path: '/regulament' },
       { label: 'Unități Arondate', path: '/unitati-arondate' },
+      { label: 'Elevi Înscriși', path: '/elevi-inscrisi' },
     ],
   },
   { label: 'Anunțuri', path: '/anunturi' },
