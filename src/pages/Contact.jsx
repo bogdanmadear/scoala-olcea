@@ -11,21 +11,28 @@ export default function Contact() {
               <span className="contact-icon">📍</span>
               <div>
                 <strong>Adresă</strong>
-                <p>Sat Olcea, Nr. —, Comuna Olcea<br />Județul Bihor, România</p>
+                <p>Strada Principală, Nr. 229<br />Olcea, Județul Bihor, 417355</p>
               </div>
             </div>
             <div className="contact-item">
               <span className="contact-icon">📞</span>
               <div>
                 <strong>Telefon Secretariat</strong>
-                <p>+40 259 000 000</p>
+                <p>0259 310 213</p>
               </div>
             </div>
             <div className="contact-item">
               <span className="contact-icon">✉️</span>
               <div>
                 <strong>Email</strong>
-                <p>scoala@olcea.ro</p>
+                <p>scoala_olcea@yahoo.com</p>
+              </div>
+            </div>
+            <div className="contact-item">
+              <span className="contact-icon">🔢</span>
+              <div>
+                <strong>Cod Fiscal</strong>
+                <p>19094413</p>
               </div>
             </div>
             <div className="contact-item">

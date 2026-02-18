@@ -36,9 +36,9 @@ export default function Footer() {
         <div className="footer__col">
           <h4 className="footer__heading">Contact</h4>
           <ul className="footer__contact">
-            <li>📍 Sat Olcea, Comuna Olcea, Bihor</li>
-            <li>📞 +40 259 000 000</li>
-            <li>✉️ scoala@olcea.ro</li>
+            <li>📍 Str. Principală 229, Olcea, BH</li>
+            <li>📞 0259 310 213</li>
+            <li>✉️ scoala_olcea@yahoo.com</li>
           </ul>
         </div>
       </div>

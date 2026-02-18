@@ -53,16 +53,16 @@ export default function Home() {
           </div>
           <div className="home-info__cards">
             <div className="info-card info-card--blue">
-              <span className="info-card__num">—</span>
+              <span className="info-card__num">279</span>
               <span className="info-card__label">Elevi înscriși</span>
             </div>
             <div className="info-card info-card--gold">
-              <span className="info-card__num">—</span>
+              <span className="info-card__num">39</span>
               <span className="info-card__label">Cadre didactice</span>
             </div>
             <div className="info-card info-card--dark">
-              <span className="info-card__num">—</span>
-              <span className="info-card__label">Ani de activitate</span>
+              <span className="info-card__num">6</span>
+              <span className="info-card__label">Unități arondate</span>
             </div>
           </div>
         </div>
