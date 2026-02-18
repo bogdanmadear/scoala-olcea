@@ -10,10 +10,10 @@ const anunturi = [
   },
   {
     id: 2,
-    data: '10 Feb 2026',
-    titlu: 'Program "Școala Altfel" 2026',
+    data: '10 Dec 2025',
+    titlu: 'Program "Școala Altfel" 2025',
     categorie: 'Activități',
-    continut: 'Activitățile din cadrul programului "Școala Altfel" se vor desfășura în perioada 10–14 martie 2026. Detalii suplimentare vor fi comunicate prin diriginți.',
+    continut: 'Activitățile din cadrul programului "Școala Altfel" se vor desfășura în perioada 15–19 decembrie 2025. Detalii suplimentare vor fi comunicate prin diriginți.',
   },
   {
     id: 3,
