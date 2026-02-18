@@ -1,0 +1,53 @@
+.anunturi-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.anunt-card {
+  background: var(--color-white);
+  border: 1px solid var(--color-gray-200);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  border-left: 4px solid var(--color-primary);
+  transition: box-shadow var(--transition);
+}
+
+.anunt-card:hover {
+  box-shadow: var(--shadow-md);
+}
+
+.anunt-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.6rem;
+}
+
+.anunt-categorie {
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.2rem 0.65rem;
+  border-radius: 50px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.anunt-data {
+  font-size: 0.8rem;
+  color: var(--color-gray-600);
+  margin-left: auto;
+}
+
+.anunt-titlu {
+  font-size: 1.05rem;
+  color: var(--color-primary);
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+
+.anunt-continut {
+  font-size: 0.9rem;
+  color: var(--color-gray-600);
+  line-height: 1.65;
+}

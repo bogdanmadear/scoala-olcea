@@ -1,0 +1,58 @@
+.portal-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.25rem;
+}
+
+.portal-card {
+  background: var(--color-white);
+  border: 1px solid var(--color-gray-200);
+  border-radius: var(--radius);
+  padding: 2rem;
+  text-align: center;
+  position: relative;
+  transition: box-shadow var(--transition);
+}
+
+.portal-card:hover {
+  box-shadow: var(--shadow-md);
+}
+
+.portal-card--coming {
+  opacity: 0.75;
+}
+
+.portal-icon {
+  font-size: 2.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.portal-card h3 {
+  color: var(--color-primary);
+  font-size: 1.05rem;
+  margin-bottom: 0.35rem;
+}
+
+.portal-card p {
+  font-size: 0.85rem;
+  color: var(--color-gray-600);
+}
+
+.portal-badge {
+  display: inline-block;
+  margin-top: 0.75rem;
+  background: var(--color-gray-100);
+  color: var(--color-gray-600);
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 0.2rem 0.65rem;
+  border-radius: 50px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+@media (max-width: 550px) {
+  .portal-grid {
+    grid-template-columns: 1fr;
+  }
+}
