@@ -35,8 +35,8 @@ export default function Navbar() {
     <header className="navbar">
       <div className="navbar__top">
         <div className="container navbar__top-inner">
-          <span>📍 Comuna Olcea, Bihor, România</span>
-          <span>📞 Secretariat: +40 259 000 000</span>
+          <span>📍 Str. Principală 229, Olcea, Bihor</span>
+          <span>📞 Secretariat: 0259 310 213</span>
         </div>
       </div>
 

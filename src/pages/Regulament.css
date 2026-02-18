@@ -1,0 +1,180 @@
+/* ── Document card ───────────────────────────── */
+.reg-doc-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  background: var(--color-primary);
+  color: var(--color-white);
+  border-radius: var(--radius);
+  padding: 1.5rem 2rem;
+  margin-bottom: 2.5rem;
+  flex-wrap: wrap;
+}
+
+.reg-doc-info {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.reg-doc-icon {
+  font-size: 2.2rem;
+  flex-shrink: 0;
+}
+
+.reg-doc-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 0.3rem;
+}
+
+.reg-doc-meta {
+  font-size: 0.83rem;
+  opacity: 0.8;
+  line-height: 1.5;
+}
+
+.reg-download-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.7rem 1.5rem;
+  background: var(--color-accent);
+  color: var(--color-primary-dark);
+  border-radius: var(--radius);
+  font-weight: 700;
+  font-size: 0.9rem;
+  white-space: nowrap;
+  transition: background var(--transition), transform var(--transition);
+  flex-shrink: 0;
+}
+
+.reg-download-btn:hover {
+  background: var(--color-accent-light);
+  transform: translateY(-2px);
+}
+
+/* ── Chapter preview ──────────────────────────── */
+.reg-section {
+  margin-bottom: 2.5rem;
+}
+
+.reg-chapter-title {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 1.15rem;
+  color: var(--color-primary);
+  margin-bottom: 1.25rem;
+  padding-bottom: 0.6rem;
+  border-bottom: 2px solid var(--color-accent);
+}
+
+.reg-chapter-nr {
+  background: var(--color-primary);
+  color: var(--color-white);
+  font-size: 0.78rem;
+  font-weight: 700;
+  padding: 0.2rem 0.65rem;
+  border-radius: 50px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  flex-shrink: 0;
+}
+
+.reg-articles {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+}
+
+.reg-article {
+  display: flex;
+  gap: 0.75rem;
+  padding: 0.9rem 1rem;
+  background: var(--color-gray-50);
+  border: 1px solid var(--color-gray-200);
+  border-left: 3px solid var(--color-primary-light);
+  border-radius: 0 var(--radius) var(--radius) 0;
+}
+
+.reg-art-nr {
+  font-weight: 700;
+  color: var(--color-primary);
+  font-size: 0.85rem;
+  flex-shrink: 0;
+  padding-top: 0.1rem;
+}
+
+.reg-art-text {
+  font-size: 0.88rem;
+  color: var(--color-gray-800);
+  line-height: 1.7;
+}
+
+/* ── Table of contents ────────────────────────── */
+.reg-toc {
+  background: var(--color-gray-50);
+  border: 1px solid var(--color-gray-200);
+  border-radius: var(--radius);
+  padding: 1.5rem 2rem;
+}
+
+.reg-toc-title {
+  font-size: 1rem;
+  color: var(--color-primary);
+  margin-bottom: 0.35rem;
+}
+
+.reg-toc-note {
+  font-size: 0.82rem;
+  color: var(--color-gray-600);
+  margin-bottom: 1.25rem;
+}
+
+.reg-toc-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  counter-reset: none;
+}
+
+.reg-toc-item {
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid var(--color-gray-200);
+  font-size: 0.88rem;
+}
+
+.reg-toc-item:last-child {
+  border-bottom: none;
+}
+
+.reg-toc-nr {
+  color: var(--color-primary);
+  font-weight: 700;
+  font-size: 0.78rem;
+  min-width: 60px;
+  flex-shrink: 0;
+}
+
+.reg-toc-titlu {
+  color: var(--color-gray-800);
+  line-height: 1.4;
+}
+
+@media (max-width: 600px) {
+  .reg-doc-card {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .reg-download-btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
