@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 import './InformatiiUtile.css'
 
 const EMBED_OLCEA   = 'https://maps.google.com/maps?q=46.6833868,21.9829328&output=embed&z=17'
@@ -176,12 +176,31 @@ const unitati = [
 // Etichete pentru fiecare stare a cardului
 const HINT = ['Click pentru elevi înscriși', 'Click pentru hartă', 'Click pentru fotografie']
 
+const SWIPE_THRESHOLD = 50
+
 export default function InformatiiUtile() {
   const [cardStates, setCardStates] = useState({})
+  const touchStartX = useRef({})
 
   const getState = (id) => cardStates[id] || 0
+
   const nextState = (id) =>
     setCardStates(prev => ({ ...prev, [id]: ((prev[id] || 0) + 1) % 3 }))
+
+  const prevState = (id) =>
+    setCardStates(prev => ({ ...prev, [id]: ((prev[id] || 0) + 2) % 3 }))
+
+  const handleTouchStart = (id, e) => {
+    touchStartX.current[id] = e.touches[0].clientX
+  }
+
+  const handleTouchEnd = (id, e) => {
+    const startX = touchStartX.current[id]
+    if (startX === undefined) return
+    const diff = startX - e.changedTouches[0].clientX
+    if (Math.abs(diff) < SWIPE_THRESHOLD) return
+    diff > 0 ? nextState(id) : prevState(id)
+  }
 
   return (
     <div className="page-content">
@@ -189,7 +208,7 @@ export default function InformatiiUtile() {
         <h1 className="page-title">Informații Utile</h1>
 
         <p className="iu-intro-text">
-          Apasă pe cardul unei unități pentru a vedea numărul de elevi înscriși,
+          Apasă (sau glisează) pe cardul unei unități pentru a vedea numărul de elevi înscriși,
           apoi din nou pentru localizarea pe hartă.
         </p>
 
@@ -201,6 +220,8 @@ export default function InformatiiUtile() {
                 key={u.id}
                 className="iu-card"
                 onClick={() => nextState(u.id)}
+                onTouchStart={(e) => handleTouchStart(u.id, e)}
+                onTouchEnd={(e) => handleTouchEnd(u.id, e)}
                 role="button"
                 tabIndex={0}
                 onKeyDown={(e) => e.key === 'Enter' && nextState(u.id)}
