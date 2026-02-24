@@ -86,6 +86,28 @@
   box-shadow: 0 0 0 3px rgba(36,86,164,0.12);
 }
 
+/* ── Feedback ──────────────────────────────── */
+.form-feedback {
+  font-size: 0.88rem;
+  font-weight: 600;
+  padding: 0.6rem 0.85rem;
+  border-radius: var(--radius);
+  margin-bottom: 0.75rem;
+}
+
+.form-feedback--success {
+  background: #ecfdf5;
+  color: #065f46;
+  border: 1px solid #6ee7b7;
+}
+
+.form-feedback--error {
+  background: #fef2f2;
+  color: #991b1b;
+  border: 1px solid #fca5a5;
+}
+
+/* ── Submit ────────────────────────────────── */
 .contact-submit {
   width: 100%;
   padding: 0.75rem;
@@ -99,9 +121,14 @@
   transition: background var(--transition), transform var(--transition);
 }
 
-.contact-submit:hover {
+.contact-submit:hover:not(:disabled) {
   background: var(--color-primary-light);
   transform: translateY(-1px);
+}
+
+.contact-submit:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
 }
 
 @media (max-width: 768px) {
