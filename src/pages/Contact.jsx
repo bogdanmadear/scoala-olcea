@@ -5,9 +5,9 @@ import './Contact.css'
 // ─── EmailJS config ───────────────────────────────────────────────
 // Înlocuiește valorile de mai jos cu cele din contul tău EmailJS:
 //   https://dashboard.emailjs.com/admin
-const EMAILJS_SERVICE_ID  = 'YOUR_SERVICE_ID'   // ex: 'service_abc123'
-const EMAILJS_TEMPLATE_ID = 'YOUR_TEMPLATE_ID'  // ex: 'template_xyz789'
-const EMAILJS_PUBLIC_KEY  = 'YOUR_PUBLIC_KEY'   // ex: 'aBcDeFgHiJkLmNoP'
+const EMAILJS_SERVICE_ID  = 'service_z8i8rhk'   // ex: 'service_abc123'
+const EMAILJS_TEMPLATE_ID = 'template_flzbjsd'  // ex: 'template_xyz789'
+const EMAILJS_PUBLIC_KEY  = 'zBWbhevSZ9a5IoHp3'   // ex: 'aBcDeFgHiJkLmNoP'
 // ─────────────────────────────────────────────────────────────────
 
 export default function Contact() {
