@@ -166,14 +166,19 @@
 }
 
 /* ── Responsive ───────────────────────────── */
-@media (max-width: 768px) {
+@media (max-width: 900px) {
   .hero {
-    min-height: 70vh;
+    min-height: auto;
   }
 
   .hero__content {
     padding-top: 3rem;
-    padding-bottom: 9rem;
+    padding-bottom: 3rem;
+  }
+
+  .hero__stats {
+    position: relative;
+    bottom: auto;
   }
 
   .hero__stats-grid {
@@ -187,11 +192,5 @@
   .hero__stat:nth-child(1),
   .hero__stat:nth-child(2) {
     border-bottom: 1px solid rgba(255,255,255,0.08);
-  }
-}
-
-@media (max-width: 480px) {
-  .hero__stats-grid {
-    grid-template-columns: repeat(2, 1fr);
   }
 }
