@@ -74,7 +74,7 @@ export default function DespreNoi() {
               <span className="dn-meta-item__label">Localități</span>
             </div>
             <div className="dn-meta-item">
-              <span className="dn-meta-item__val">2024</span>
+              <span className="dn-meta-item__val">2026</span>
               <span className="dn-meta-item__label">An școlar curent</span>
             </div>
           </div>
