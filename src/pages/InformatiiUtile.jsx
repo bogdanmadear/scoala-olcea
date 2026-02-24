@@ -3,7 +3,8 @@ import './InformatiiUtile.css'
 
 const EMBED_OLCEA   = 'https://maps.google.com/maps?q=46.6833868,21.9829328&output=embed&z=17'
 const EMBED_CALACEA = 'https://maps.google.com/maps?q=46.67529,21.9277225&output=embed&z=17'
-const EMBED_HODISEL = 'https://maps.google.com/maps?q=46.648267,22.047636&output=embed&z=17'
+const EMBED_UCURIS  = 'https://maps.google.com/maps?q=46.648267,22.047636&output=embed&z=17'
+const EMBED_HODISEL = EMBED_UCURIS
 
 const unitati = [
   {
@@ -130,7 +131,7 @@ const unitati = [
     tip: 'Grădiniță',
     localitate: 'Ucuriș',
     img: '/images/unitati/gradinita-nr4-ucuris.jpeg',
-    mapEmbed: EMBED_OLCEA,
+    mapEmbed: EMBED_UCURIS,
     elevi: {
       total: 69,
       nota: 'Date cumulate cu Grădinița Nr. 2 Călacea',
