@@ -39,8 +39,11 @@ npm run lint      # Run ESLint across the project
 - `src/pages/` → câte un fișier per rută (fiecare cu `.css` co-located)
 - `src/index.css` → variabile CSS globale, resets și clase utilitare
 - `public/` → assets statice servite ca atare (ex: documente `.docx` descărcabile)
+- `public/images/unitati/` → fotografii ale unităților de învățământ (5 fișiere `.jpeg` cu nume URL-safe)
 - `Doc_scoala/` → documente sursă ale școlii (nu sunt servite direct, se copiază în `public/` când e nevoie)
 - `Img_scoala/` → imagini sursă ale școlii
+- `Img_scoala/Unitati arondate/` → imagini sursă pentru unitățile arondate (nume cu diacritice, copiate în `public/images/unitati/`)
+- `Link_scoala/Locatii.txt` → linkuri Google Maps (maps.app.goo.gl) pentru fiecare unitate
 
 ### Routing
 
@@ -72,9 +75,36 @@ Rutele sunt definite în `App.jsx`. Navbar-ul grupează unele rute sub dropdown-
 
 Config în `eslint.config.js` (flat config format). Regula `no-unused-vars` ignoră variabilele cu nume ce încep cu literă mare sau underscore (`^[A-Z_]`), pentru a acomoda importurile de componente React nedetectate de ESLint.
 
+**Atenție:** `eslint-plugin-react-hooks@7.0.1` nu suportă ESLint v10 — versiunea fixată în `package.json` este `"eslint": "^9.0.0"`. Nu upgrada la v10.
+
 ### Dependențe externe
 
 - **`@emailjs/browser`** — folosit în `Contact.jsx` pentru trimiterea emailurilor din formular fără backend. Credențialele (Service ID, Template ID, Public Key) sunt definite ca constante în capul fișierului `Contact.jsx`.
+
+### Imagini unități
+
+Imaginile sunt stocate în `public/images/unitati/` cu nume URL-safe:
+
+| Fișier | Unitate |
+|--------|---------|
+| `scoala-gimnaziala-nr1-olcea.jpeg` | Școala Gimnazială Nr. 1 Olcea |
+| `scoala-gimnaziala-nr2-calacea.jpeg` | Școala Gimnazială Nr. 2 Călacea |
+| `scoala-primara-nr2-calacea.jpeg` | Școala Primară Nr. 2 Călacea |
+| `gradinita-nr2-calacea.jpeg` | Grădinița cu Program Normal Nr. 2 Călacea |
+| `gradinita-nr4-ucuris.jpeg` | Grădinița cu Program Normal Nr. 4 Ucuriș |
+
+Școala Primară Nr. 1 Hodișel nu are fotografie momentan (placeholder „Fotografie în curând").
+
+### Coordonate GPS unități (pentru embed hărți)
+
+| Unitate | Lat | Lng |
+|---------|-----|-----|
+| Olcea | 46.6833868 | 21.9829328 |
+| Călacea (toate unitățile) | 46.67529 | 21.9277225 |
+| Ucuriș | 46.63966827816357 | 21.95635508386115 |
+| Hodișel | 46.648325211218165 | 22.047678710039456 |
+
+Embed URL format: `https://maps.google.com/maps?q=LAT,LNG&output=embed&z=17`
 
 ---
 
@@ -82,16 +112,16 @@ Config în `eslint.config.js` (flat config format). Regula `no-unused-vars` igno
 
 | Pagină | Status | Note |
 |--------|--------|-------|
-| Home | ✅ Complet | Hero + Acces Rapid + Despre |
+| Home | ✅ Complet | Hero + Acces Rapid + Despre; fix mobile: stats bar nu mai overlap butoanele |
 | Anunțuri | ✅ Complet | 3 anunțuri demo cu badge-uri colorate |
 | Portal Elevi | ✅ Complet | Grid cu 4 module marcate „În curând" |
 | Contact | ✅ Complet | Date contact + formular cu EmailJS funcțional (`@emailjs/browser`) |
 | Regulament | ✅ Complet | Cap. I afișat complet + cuprins 17 capitole + buton download `.docx` |
 | Organigramă | ✅ Complet | Layout 3 coloane, date reale 2025-2026, live pe Vercel |
-| **Despre Noi** | ⏳ **NEXT** | De completat cu text real despre școală |
-| Informații Utile | ⏳ Placeholder | De completat |
-| Unități Arondate | ⏳ Placeholder | De completat |
-| Elevi Înscriși | ⏳ Placeholder | De completat |
+| Despre Noi | ✅ Complet | Intro școală + grilă 3 col cu foto unități; card placeholder Hodișel |
+| Informații Utile | ✅ Complet | Carduri interactive 3 stări (foto → elevi înscriși → hartă); swipe mobile |
+| Unități Arondate | ✅ Complet | Grid 2 col, liste cadre didactice per unitate |
+| Elevi Înscriși | ✅ Complet | Tabele elevi pe clase, grupate pe unități |
 
 ---
 
@@ -100,8 +130,8 @@ Config în `eslint.config.js` (flat config format). Regula `no-unused-vars` igno
 | Fișier | Conținut | Utilizat |
 |--------|----------|---------|
 | `1 ROI 2025 - 2026.docx` | Regulament de Ordine Interioară | ✅ Copiat în `public/ROI-2025-2026.docx` |
-| `2 ROF 2025 - 2026.docx` | Regulament de Organizare și Funcționare | Util pentru Informații Utile |
+| `2 ROF 2025 - 2026.docx` | Regulament de Organizare și Funcționare | Util pentru completări viitoare |
 | `2026_02_20_ORGANIGRAMA.docx` | Organigramă grafică | ✅ Date extrase și integrate în `Organigrama.jsx` |
-| `2025-2026 NUMĂR ELEVI...` | Liste elevi pe clase | Util pentru EleviInscriși |
-| `2026_PREZENȚA PERSONA...` | Prezență personal | Util pentru Despre Noi / personal |
+| `2025-2026 NUMĂR ELEVI...` | Liste elevi pe clase | ✅ Date integrate în `EleviInscrisi.jsx` |
+| `2026_PREZENȚA PERSONA...` | Prezență personal | Util pentru completări viitoare (Despre Noi / personal) |
 | `roi_text.txt` | Varianta text a ROI | ✅ Folosit la extragerea conținutului pentru Regulament |
