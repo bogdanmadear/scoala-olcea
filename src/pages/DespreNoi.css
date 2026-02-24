@@ -21,6 +21,7 @@
   color: var(--color-gray-800);
   line-height: 1.7;
   margin-bottom: 0.75rem;
+  overflow-wrap: break-word;
 }
 
 .dn-intro__text p:last-child {
@@ -140,15 +141,18 @@
 @media (max-width: 900px) {
   .dn-intro {
     grid-template-columns: 1fr;
+    padding: 1.25rem;
   }
 
   .dn-intro__meta {
     flex-direction: row;
+    flex-wrap: wrap;
     min-width: unset;
   }
 
   .dn-meta-item {
     flex: 1;
+    min-width: 80px;
   }
 
   .dn-grid {
@@ -157,6 +161,18 @@
 }
 
 @media (max-width: 500px) {
+  .dn-intro {
+    padding: 1rem;
+  }
+
+  .dn-intro__titlu {
+    font-size: 1.15rem;
+  }
+
+  .dn-intro__text p {
+    font-size: 0.9rem;
+  }
+
   .dn-grid {
     grid-template-columns: 1fr;
   }
