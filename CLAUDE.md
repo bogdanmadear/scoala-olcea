@@ -2,31 +2,49 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Project overview
+
+Site oficial al **Școlii Gimnaziale Nr. 1 Olcea**, Comuna Olcea, Județul Bihor, România.
+Director: Prof. Pop Ionela Adina
+
 ## Commands
 
 ```bash
-npm run dev       # Start development server (Vite HMR)
+npm run dev       # Start development server (Vite HMR) → http://localhost:5173
 npm run build     # Production build → dist/
 npm run preview   # Preview production build locally
 npm run lint      # Run ESLint across the project
 ```
 
+## Deploy
+
+- **Repo GitHub:** https://github.com/bogdanmadear/scoala-olcea
+- **Hosting:** Vercel — auto-deploy la fiecare push pe `main`
+- Workflow standard după orice modificare:
+  ```bash
+  git add .
+  git commit -m "descriere modificare"
+  git push
+  ```
+
 ## Architecture
 
-**React 19 + Vite SPA** for Școala Gimnazială Olcea (school website in Romania). All UI text and content is in **Romanian**.
+**React 19 + Vite SPA** — site complet static, fără backend sau API. Tot conținutul este definit ca array-uri/obiecte inline în componentele de pagină. Tot textul UI este în **limba română**.
 
 ### Structure
 
-- `src/main.jsx` → entry point, mounts `<App>`
-- `src/App.jsx` → router setup with `<BrowserRouter>` and all route definitions
-- `src/components/` → shared components: `Navbar`, `Hero`, `Footer` (each with co-located `.css`)
-- `src/pages/` → one file per route (each with co-located `.css`)
-- `src/index.css` → global CSS variables, resets, and utility classes
-- `public/` → static assets served as-is (e.g., downloadable `.docx` documents)
+- `src/main.jsx` → entry point, montează `<App>`
+- `src/App.jsx` → router setup cu `<BrowserRouter>` și toate definițiile de rute
+- `src/components/` → componente partajate: `Navbar`, `Hero`, `Footer` (fiecare cu `.css` co-located)
+- `src/pages/` → câte un fișier per rută (fiecare cu `.css` co-located)
+- `src/index.css` → variabile CSS globale, resets și clase utilitare
+- `public/` → assets statice servite ca atare (ex: documente `.docx` descărcabile)
+- `Doc_scoala/` → documente sursă ale școlii (nu sunt servite direct, se copiază în `public/` când e nevoie)
+- `Img_scoala/` → imagini sursă ale școlii
 
 ### Routing
 
-Routes are defined in `App.jsx`. The Navbar groups some routes under an "Informații" dropdown (Informații Utile, Organigramă, Regulament, Unități Arondate, Elevi Înscriși).
+Rutele sunt definite în `App.jsx`. Navbar-ul grupează unele rute sub dropdown-ul „Informații".
 
 | Path | Component |
 |------|-----------|
@@ -43,21 +61,47 @@ Routes are defined in `App.jsx`. The Navbar groups some routes under an "Informa
 
 ### Styling conventions
 
-- **CSS variables** defined in `index.css` use a `--color-` prefix (e.g., `--color-primary`, `--color-accent`, `--color-gray-600`) — use these rather than hardcoded values. Other tokens: `--shadow-sm/md/lg`, `--radius`, `--transition`, `--font-sans`.
-- **Global utility classes** from `index.css`: `.container` (1200px max-width, 1.5rem padding), `.page-content` (min-height + 4rem padding), `.page-title` (styled h1 with accent underline), `.placeholder-card`.
-- Each component/page has its own `.css` file imported directly in the JSX file.
-- Responsive breakpoint: `max-width: 900px`.
-
-### Data
-
-All data (announcements, staff lists, affiliated schools, etc.) is defined as inline arrays/objects inside the page components. There is no backend or API — the site is fully static.
-
-### Placeholder / stub pages
-
-- `DespreNoi`, `InformatiiUtile`, `Organigrama` — stubs awaiting real content.
-- `PortalElevi` — UI shell with all features marked "În curând" (coming soon).
-- `Contact` — form is non-functional (`onSubmit` only calls `e.preventDefault()`; no submission logic).
+- **Variabile CSS** definite în `index.css` folosesc prefixul `--color-` (ex: `--color-primary: #1a3a6b`, `--color-accent: #c8a94a`, `--color-gray-600`). Folosește întotdeauna variabilele, nu valori hardcodate.
+- Alte tokene globale: `--shadow-sm/md/lg`, `--radius`, `--transition`, `--font-sans`.
+- **Clase utilitare globale** din `index.css`: `.container` (max-width 1200px, padding 1.5rem), `.page-content` (min-height + padding 4rem), `.page-title` (h1 stilizat cu underline accent), `.placeholder-card`.
+- Fiecare componentă/pagină are propriul `.css` importat direct în JSX.
+- **Breakpoint responsive:** `max-width: 900px`.
+- Nu se folosește Tailwind sau librării externe de UI.
 
 ### ESLint
 
-Config is in `eslint.config.js` (flat config format). The `no-unused-vars` rule ignores variables whose names start with an uppercase letter or underscore (`^[A-Z_]`), which accommodates React component imports that ESLint can't detect as used via JSX.
+Config în `eslint.config.js` (flat config format). Regula `no-unused-vars` ignoră variabilele cu nume ce încep cu literă mare sau underscore (`^[A-Z_]`), pentru a acomoda importurile de componente React nedetectate de ESLint.
+
+### Dependențe externe
+
+- **`@emailjs/browser`** — folosit în `Contact.jsx` pentru trimiterea emailurilor din formular fără backend. Credențialele (Service ID, Template ID, Public Key) sunt definite ca constante în capul fișierului `Contact.jsx`.
+
+---
+
+## Status pagini
+
+| Pagină | Status | Note |
+|--------|--------|-------|
+| Home | ✅ Complet | Hero + Acces Rapid + Despre |
+| Anunțuri | ✅ Complet | 3 anunțuri demo cu badge-uri colorate |
+| Portal Elevi | ✅ Complet | Grid cu 4 module marcate „În curând" |
+| Contact | ✅ Complet | Date contact + formular cu EmailJS funcțional (`@emailjs/browser`) |
+| Regulament | ✅ Complet | Cap. I afișat complet + cuprins 17 capitole + buton download `.docx` |
+| Organigramă | ✅ Complet | Layout 3 coloane, date reale 2025-2026, live pe Vercel |
+| **Despre Noi** | ⏳ **NEXT** | De completat cu text real despre școală |
+| Informații Utile | ⏳ Placeholder | De completat |
+| Unități Arondate | ⏳ Placeholder | De completat |
+| Elevi Înscriși | ⏳ Placeholder | De completat |
+
+---
+
+## Fișiere sursă școală (`Doc_scoala/`)
+
+| Fișier | Conținut | Utilizat |
+|--------|----------|---------|
+| `1 ROI 2025 - 2026.docx` | Regulament de Ordine Interioară | ✅ Copiat în `public/ROI-2025-2026.docx` |
+| `2 ROF 2025 - 2026.docx` | Regulament de Organizare și Funcționare | Util pentru Informații Utile |
+| `2026_02_20_ORGANIGRAMA.docx` | Organigramă grafică | ✅ Date extrase și integrate în `Organigrama.jsx` |
+| `2025-2026 NUMĂR ELEVI...` | Liste elevi pe clase | Util pentru EleviInscriși |
+| `2026_PREZENȚA PERSONA...` | Prezență personal | Util pentru Despre Noi / personal |
+| `roi_text.txt` | Varianta text a ROI | ✅ Folosit la extragerea conținutului pentru Regulament |
