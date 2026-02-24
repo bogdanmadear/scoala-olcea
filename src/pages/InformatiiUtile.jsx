@@ -3,8 +3,8 @@ import './InformatiiUtile.css'
 
 const EMBED_OLCEA   = 'https://maps.google.com/maps?q=46.6833868,21.9829328&output=embed&z=17'
 const EMBED_CALACEA = 'https://maps.google.com/maps?q=46.67529,21.9277225&output=embed&z=17'
-const EMBED_UCURIS  = 'https://maps.google.com/maps?q=46.648267,22.047636&output=embed&z=17'
-const EMBED_HODISEL = EMBED_UCURIS
+const EMBED_UCURIS  = 'https://maps.google.com/maps?q=46.63966827816357,21.95635508386115&output=embed&z=17'
+const EMBED_HODISEL = 'https://maps.google.com/maps?q=46.648325211218165,22.047678710039456&output=embed&z=17'
 
 const unitati = [
   {
