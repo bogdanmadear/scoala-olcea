@@ -1,8 +1,6 @@
 import { lazy, Suspense } from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Navbar from './components/Navbar'
-
-const StudioPage = lazy(() => import('./pages/StudioPage'))
 import Footer from './components/Footer'
 import Home from './pages/Home'
 import DespreNoi from './pages/DespreNoi'
@@ -14,7 +12,10 @@ import EleviInscrisi from './pages/EleviInscrisi'
 import Anunturi from './pages/Anunturi'
 import PortalElevi from './pages/PortalElevi'
 import Contact from './pages/Contact'
+import Admin from './pages/Admin'
 import './index.css'
+
+const StudioPage = lazy(() => import('./pages/StudioPage'))
 
 function App() {
   return (
@@ -43,6 +44,7 @@ function App() {
                 <Route path="/anunturi" element={<Anunturi />} />
                 <Route path="/portal-elevi" element={<PortalElevi />} />
                 <Route path="/contact" element={<Contact />} />
+                <Route path="/admin" element={<Admin />} />
               </Routes>
             </main>
             <Footer />

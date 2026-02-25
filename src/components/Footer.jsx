@@ -47,6 +47,7 @@ export default function Footer() {
         <div className="container footer__bottom-inner">
           <span>© {new Date().getFullYear()} Școala Gimnazială Olcea. Toate drepturile rezervate.</span>
           <span className="footer__bottom-right">Ministerul Educației • Inspectoratul Școlar Bihor</span>
+          <Link to="/admin" className="footer__admin-link">Administrare</Link>
         </div>
       </div>
     </footer>

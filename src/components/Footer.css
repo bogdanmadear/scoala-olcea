@@ -88,6 +88,16 @@
   color: rgba(255,255,255,0.3);
 }
 
+.footer__admin-link {
+  color: rgba(255,255,255,0.2);
+  font-size: 0.72rem;
+  transition: color var(--transition);
+}
+
+.footer__admin-link:hover {
+  color: rgba(255,255,255,0.5);
+}
+
 @media (max-width: 900px) {
   .footer__grid {
     grid-template-columns: 1fr 1fr;
