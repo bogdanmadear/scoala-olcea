@@ -111,7 +111,7 @@ const unitati = [
     mapEmbed: EMBED_CALACEA,
     elevi: {
       total: 69,
-      nota: 'Date cumulate cu Grădinița Nr. 4 Ucuriș',
+      nota: 'Date totale pentru ambele grădinițe (Nr. 2 Călacea + Nr. 4 Ucuriș)',
       sectiuni: [
         {
           nivel: 'Preșcolari',
@@ -134,7 +134,7 @@ const unitati = [
     mapEmbed: EMBED_UCURIS,
     elevi: {
       total: 69,
-      nota: 'Date cumulate cu Grădinița Nr. 2 Călacea',
+      nota: 'Date totale pentru ambele grădinițe (Nr. 2 Călacea + Nr. 4 Ucuriș)',
       sectiuni: [
         {
           nivel: 'Preșcolari',

@@ -160,6 +160,7 @@
   height: 180px;
   border: none;
   display: block;
+  pointer-events: none;
 }
 
 /* ── Footer ──────────────────────────────────── */
