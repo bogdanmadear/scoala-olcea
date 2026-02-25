@@ -1,5 +1,8 @@
+import { lazy, Suspense } from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Navbar from './components/Navbar'
+
+const StudioPage = lazy(() => import('./pages/StudioPage'))
 import Footer from './components/Footer'
 import Home from './pages/Home'
 import DespreNoi from './pages/DespreNoi'
@@ -16,22 +19,36 @@ import './index.css'
 function App() {
   return (
     <BrowserRouter>
-      <Navbar />
-      <main>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/despre-noi" element={<DespreNoi />} />
-          <Route path="/informatii-utile" element={<InformatiiUtile />} />
-          <Route path="/organigrama" element={<Organigrama />} />
-          <Route path="/regulament" element={<Regulament />} />
-          <Route path="/unitati-arondate" element={<UnitatiArondate />} />
-          <Route path="/elevi-inscrisi" element={<EleviInscrisi />} />
-          <Route path="/anunturi" element={<Anunturi />} />
-          <Route path="/portal-elevi" element={<PortalElevi />} />
-          <Route path="/contact" element={<Contact />} />
-        </Routes>
-      </main>
-      <Footer />
+      <Routes>
+        {/* Ruta Studio — fără Navbar/Footer, încărcat lazy */}
+        <Route path="/studio/*" element={
+          <Suspense fallback={<div style={{ padding: '2rem', textAlign: 'center' }}>Se încarcă Studio...</div>}>
+            <StudioPage />
+          </Suspense>
+        } />
+
+        {/* Restul site-ului */}
+        <Route path="/*" element={
+          <>
+            <Navbar />
+            <main>
+              <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/despre-noi" element={<DespreNoi />} />
+                <Route path="/informatii-utile" element={<InformatiiUtile />} />
+                <Route path="/organigrama" element={<Organigrama />} />
+                <Route path="/regulament" element={<Regulament />} />
+                <Route path="/unitati-arondate" element={<UnitatiArondate />} />
+                <Route path="/elevi-inscrisi" element={<EleviInscrisi />} />
+                <Route path="/anunturi" element={<Anunturi />} />
+                <Route path="/portal-elevi" element={<PortalElevi />} />
+                <Route path="/contact" element={<Contact />} />
+              </Routes>
+            </main>
+            <Footer />
+          </>
+        } />
+      </Routes>
     </BrowserRouter>
   )
 }
