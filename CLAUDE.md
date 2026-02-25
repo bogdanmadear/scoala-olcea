@@ -29,12 +29,14 @@ npm run lint      # Run ESLint across the project
 
 ## Architecture
 
-**React 19 + Vite SPA** — site complet static, fără backend sau API. Tot conținutul este definit ca array-uri/obiecte inline în componentele de pagină. Tot textul UI este în **limba română**.
+**React 19 + Vite SPA** cu **Sanity CMS** pentru conținut dinamic (anunțuri). Restul conținutului este definit ca array-uri/obiecte inline în componentele de pagină. Tot textul UI este în **limba română**.
 
 ### Structure
 
 - `src/main.jsx` → entry point, montează `<App>`
-- `src/App.jsx` → router setup cu `<BrowserRouter>` și toate definițiile de rute
+- `src/App.jsx` → router setup cu `<BrowserRouter>`, toate definițiile de rute + ruta `/studio/*` (lazy)
+- `src/sanityClient.js` → client Sanity pentru queries din componente React
+- `src/sanity/` → config și scheme Sanity Studio (folosit doar de `StudioPage.jsx`)
 - `src/components/` → componente partajate: `Navbar`, `Hero`, `Footer` (fiecare cu `.css` co-located)
 - `src/pages/` → câte un fișier per rută (fiecare cu `.css` co-located)
 - `src/index.css` → variabile CSS globale, resets și clase utilitare
@@ -59,6 +61,7 @@ Rutele sunt definite în `App.jsx`. Navbar-ul grupează unele rute sub dropdown-
 | `/unitati-arondate` | UnitatiArondate |
 | `/elevi-inscrisi` | EleviInscrisi |
 | `/anunturi` | Anunturi |
+| `/studio/*` | StudioPage (Sanity Studio, lazy) |
 | `/portal-elevi` | PortalElevi |
 | `/contact` | Contact |
 
@@ -80,6 +83,24 @@ Config în `eslint.config.js` (flat config format). Regula `no-unused-vars` igno
 ### Dependențe externe
 
 - **`@emailjs/browser`** — folosit în `Contact.jsx` pentru trimiterea emailurilor din formular fără backend. Credențialele (Service ID, Template ID, Public Key) sunt definite ca constante în capul fișierului `Contact.jsx`.
+- **`sanity`** — Studio CMS embedded la ruta `/studio/*`, încărcat lazy (`StudioPage.jsx`). Config în `src/sanity/sanity.config.js`.
+- **`@sanity/client`** — client pentru citirea datelor din Sanity în componentele React. Configurat în `src/sanityClient.js`.
+
+### Sanity CMS
+
+- **Project ID:** `0y3z7qip` | **Dataset:** `production`
+- **Studio:** accesibil la `/studio` (rută fără Navbar/Footer, lazy loaded)
+- **Fișiere cheie:**
+  - `src/sanityClient.js` — client `@sanity/client` (useCdn, apiVersion 2026-02-25)
+  - `src/sanity/sanity.config.js` — config Studio (defineConfig + structureTool)
+  - `src/sanity/schemaTypes/anunt.js` — schema document `anunt`
+  - `src/sanity/schemaTypes/index.js` — exportă toate schema types
+  - `src/pages/StudioPage.jsx` — wrapper lazy pentru `<Studio>`
+- **Schema `anunt`:** câmpuri `titlu` (string, required), `continut` (text, required), `data` (date, required), `tip` (radio: Important/Informativ/Eveniment, required), `publicat` (boolean, default true)
+- **CORS:** trebuie adăugate în [sanity.io/manage](https://sanity.io/manage) → proiect `0y3z7qip` → API → CORS Origins:
+  - `http://localhost:5173`
+  - domeniul Vercel de producție
+- **Bundle:** Studio e code-split separat (~5.3MB), nu afectează bundle-ul principal (~270KB)
 
 ### Imagini unități
 
@@ -113,7 +134,7 @@ Embed URL format: `https://maps.google.com/maps?q=LAT,LNG&output=embed&z=17`
 | Pagină | Status | Note |
 |--------|--------|-------|
 | Home | ✅ Complet | Hero + Acces Rapid + Despre; fix mobile: stats bar nu mai overlap butoanele |
-| Anunțuri | ✅ Complet | 3 anunțuri demo cu badge-uri colorate |
+| Anunțuri | ⏳ În lucru | Date statice demo — de conectat la Sanity (`anunt` schema gata) |
 | Portal Elevi | ✅ Complet | Grid cu 4 module marcate „În curând" |
 | Contact | ✅ Complet | Date contact + formular cu EmailJS funcțional (`@emailjs/browser`) |
 | Regulament | ✅ Complet | Cap. I afișat complet + cuprins 17 capitole + buton download `.docx` |
